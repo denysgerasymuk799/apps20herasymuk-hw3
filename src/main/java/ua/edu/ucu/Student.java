@@ -36,14 +36,14 @@ class Student {
     // in order to DistinctDecorator can
     // compare Student objects
     public boolean equals(Object o) {
-        if (o.getClass() != getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 
         Student st = (Student) o;
         return getSurname().equals(st.getSurname())
                 && getName().equals(st.getName())
-                && getGPA() == st.getGPA() && getYear() == st.getYear();
+                && Math.abs(getGPA() - st.getGPA()) < 0.000001 && getYear() == st.getYear();
     }
 
     public int hashCode() {
