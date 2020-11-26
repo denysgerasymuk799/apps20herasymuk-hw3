@@ -1,7 +1,6 @@
 package ua.edu.ucu;
 
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 
 import ua.edu.ucu.functions.MyComparator;
 import ua.edu.ucu.functions.MyFunction;
@@ -14,7 +13,7 @@ public class SmartArrayApp {
 
         // lambda replacement
         MyPredicate pr = t -> ((Integer) t) > 0;
-        MyComparator cmp = (o1, o2) -> ((Integer) o1) - ((Integer) o2);
+        MyComparator cmp = (a, b) -> ((Integer) a) - ((Integer) b);
         MyFunction func = t -> 2 * ((Integer) t);
 
         // Input: [-1, 2, 0, 1, -5, 3]
@@ -36,11 +35,12 @@ public class SmartArrayApp {
     }
 
     public static String[]
-            findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
+            findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(
+                    Student[] students) {
 
         MyPredicate pr = t -> {
-            int searchYear = 2;
-            int minGPA = 4;
+            final int searchYear = 2;
+            final int minGPA = 4;
             Student st = (Student) t;
             return (st.getYear() == searchYear && st.getGPA() >= minGPA);
         };

@@ -3,7 +3,7 @@ package ua.edu.ucu.smartarr;
 import ua.edu.ucu.functions.MyPredicate;
 
 // Tests every element and removes it if it doesn't satisfy MyPredicate
-public class FilterDecorator extends SmartArrayDecorator{
+public class FilterDecorator extends SmartArrayDecorator {
     public FilterDecorator(SmartArray array, MyPredicate predicate) {
         super(array);
 
@@ -12,7 +12,7 @@ public class FilterDecorator extends SmartArrayDecorator{
 
         int idxNewArr = 0;
         for (int i = 0; i < smartArray.size(); i++) {
-            if (predicate.test(objectsSmartArr[i])){
+            if (predicate.test(objectsSmartArr[i])) {
                 newSmartArr[idxNewArr++] = objectsSmartArr[i];
             }
         }

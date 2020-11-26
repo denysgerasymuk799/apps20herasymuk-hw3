@@ -6,8 +6,8 @@ import java.util.Arrays;
 public class BaseArray implements SmartArray {
     private Object[] array;
 
-    public BaseArray(Object[] array){
-        if (array == null){
+    public BaseArray(Object[] array) {
+        if (array == null) {
             throw new NullPointerException();
         }
 
@@ -16,8 +16,8 @@ public class BaseArray implements SmartArray {
                 this.array, 0, array.length);
     }
 
-    public BaseArray(Object[] array, int size){
-        if (array == null){
+    public BaseArray(Object[] array, int size) {
+        if (array == null) {
             throw new NullPointerException();
         }
 
