@@ -41,9 +41,9 @@ class Student {
         }
 
         Student st = (Student) o;
-        return getSurname().equals(st.getSurname()) &&
-                getName().equals(st.getName()) &&
-                getGPA() == st.getGPA() && getYear() == st.getYear();
+        return getSurname().equals(st.getSurname())
+                && getName().equals(st.getName())
+                && getGPA() == st.getGPA() && getYear() == st.getYear();
     }
 
     public int hashCode() {
@@ -52,9 +52,9 @@ class Student {
 
     @Override
     public String toString() {
-        return "Student{name=" + name +
-                ", surname=" + surname +
-                ", " + "GPA=" + GPA +
-                ", year=" + year + '}';
+        return "Student{name=" + name
+                + ", surname=" + surname
+                + ", " + "GPA=" + GPA
+                + ", year=" + year + '}';
     }
 }

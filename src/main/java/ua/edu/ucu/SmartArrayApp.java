@@ -37,21 +37,21 @@ public class SmartArrayApp {
     public static String[]
             findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(
                     Student[] students) {
+        final int SEARCH_YEAR = 2;
+        final int MIN_GPA = 4;
 
         MyPredicate pr = t -> {
-            final int searchYear = 2;
-            final int minGPA = 4;
             Student st = (Student) t;
-            return (st.getYear() == searchYear && st.getGPA() >= minGPA);
+            return (st.getYear() == SEARCH_YEAR && st.getGPA() >= MIN_GPA);
         };
 
         SmartArray sa = new BaseArray(students);
         sa = new FilterDecorator(sa, pr);
 
-        MyComparator cmp = (obj1, obj2) -> {
-            Student st1 = (Student) obj1;
-            Student st2 = (Student) obj2;
-            return (st1.getSurname().compareTo(st2.getSurname()));
+        MyComparator cmp = (obj, otherObj) -> {
+            Student st = (Student) obj;
+            Student otherSt = (Student) otherObj;
+            return (st.getSurname().compareTo(otherSt.getSurname()));
         };
 
         MyFunction func = t -> {
