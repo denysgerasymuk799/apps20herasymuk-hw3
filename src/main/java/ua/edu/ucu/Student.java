@@ -39,11 +39,13 @@ class Student {
         if (o == null || o.getClass() != getClass()) {
             return false;
         }
+        final double MIN_DIFF = 0.000001;
 
         Student st = (Student) o;
         return getSurname().equals(st.getSurname())
                 && getName().equals(st.getName())
-                && Math.abs(getGPA() - st.getGPA()) < 0.000001 && getYear() == st.getYear();
+                && Math.abs(getGPA() - st.getGPA()) < MIN_DIFF
+                && getYear() == st.getYear();
     }
 
     public int hashCode() {
