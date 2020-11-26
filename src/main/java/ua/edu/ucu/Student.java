@@ -1,8 +1,9 @@
 package ua.edu.ucu;
 
 
-class Student {
+import java.util.Objects;
 
+class Student {
     private double GPA;
     private int year;
     private String name;
@@ -31,9 +32,29 @@ class Student {
         return surname;
     }
 
-    @Override
-    public String toString() {
-        return "Student{name=" + name + ", surname=" + surname + ", " + "GPA=" + GPA + ", year=" + year + '}';
+    // added functions equals and hashCode
+    // in order to DistinctDecorator can
+    // compare Student objects
+    public boolean equals(Object o) {
+        if (o.getClass() != getClass()) {
+            return false;
+        }
+
+        Student st = (Student) o;
+        return getSurname().equals(st.getSurname()) &&
+                getName().equals(st.getName()) &&
+                getGPA() == st.getGPA() && getYear() == st.getYear();
     }
 
+    public int hashCode() {
+        return Objects.hash(getSurname(), getName(), getGPA(), getYear());
+    }
+
+    @Override
+    public String toString() {
+        return "Student{name=" + name +
+                ", surname=" + surname +
+                ", " + "GPA=" + GPA +
+                ", year=" + year + '}';
+    }
 }
