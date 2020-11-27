@@ -61,7 +61,20 @@ public class SmartArrayAppTest {
 
         sa = new FilterDecorator(sa, pr);
 
+
+        SmartArray saOther = new BaseArray(integers);
+
+        // check if our SmartArray changes
+        // if we change integers array
+        for (int i = 0; i < integers.length; i++){
+            integers[i] *= 4;
+        }
+
+        sa = new FilterDecorator(sa, pr);
+        saOther = new FilterDecorator(saOther, pr);
+
         assertArrayEquals(new Integer[]{2, 1, 1,  2, 1, 3}, sa.toArray());
+        assertArrayEquals(new Integer[]{2, 1, 1,  2, 1, 3}, saOther.toArray());
     }
 
 
@@ -97,12 +110,21 @@ public class SmartArrayAppTest {
         Integer[] integers = {-1, -1, 2, 1, -5, 3};
 
         SmartArray sa = new BaseArray(integers);
-
         MyFunction func = t -> 2 * ((Integer) t);
 
+        SmartArray saOther = new BaseArray(integers);
+
+        // check if our SmartArray changes
+        // if we change integers array
+        for (int i = 0; i < integers.length; i++){
+            integers[i] *= 4;
+        }
+
         sa = new MapDecorator(sa, func);
+        saOther = new MapDecorator(saOther, func);
 
         assertArrayEquals(new Integer[]{-2, -2, 4, 2, -10, 6}, sa.toArray());
+        assertArrayEquals(new Integer[]{-2, -2, 4, 2, -10, 6}, saOther.toArray());
     }
 
 
@@ -129,7 +151,20 @@ public class SmartArrayAppTest {
         MyComparator cmp = (o1, o2) -> ((Integer) o1) - ((Integer) o2);
 
         sa = new SortDecorator(sa, cmp);
+
+        SmartArray saOther = new BaseArray(integers);
+
+        // check if our SmartArray changes
+        // if we change integers array
+        for (int i = 0; i < integers.length; i++){
+            integers[i] *= 0;
+        }
+
+        sa = new SortDecorator(sa, cmp);
+        saOther = new SortDecorator(saOther, cmp);
+
         assertArrayEquals(new Integer[]{-5, -1, -1, 0, 1, 1, 1, 2, 2, 3}, sa.toArray());
+        assertArrayEquals(new Integer[]{-5, -1, -1, 0, 1, 1, 1, 2, 2, 3}, saOther.toArray());
     }
 
     @Test
